@@ -477,13 +477,14 @@ def build():
     c.rect(42, 222, 154, 184, NAVY)
     draw_portrait(c, 44, 224, 150, 180)
     c.draw_text(44, 412, "PHOTOGRAPH", 1, INK2)
-    # occupation note under the photo
-    c.rect(44, 432, 150, 44, PAPER_D)
-    c.hline(44, 432, 150, RULE, 1)
-    c.hline(44, 475, 150, RULE, 1)
-    c.draw_text(52, 440, "OCCUPATION", 1, INK2)
-    c.draw_text(52, 454, "MARINE", 2, INK)
-    c.draw_text(52, 468, "BIOLOGIST", 2, INK)
+    # occupation note under the photo (box tall enough for two value
+    # lines: label + MARINE + BIOLOGIST all inside, clear of the rules)
+    c.rect(44, 426, 150, 60, PAPER_D)
+    c.hline(44, 426, 150, RULE, 1)
+    c.hline(44, 485, 150, RULE, 1)
+    c.draw_text(52, 434, "OCCUPATION", 1, INK2)
+    c.draw_text(52, 448, "MARINE", 2, INK)
+    c.draw_text(52, 466, "BIOLOGIST", 2, INK)
 
     # personal data, right of the photo
     fx, fw = 214, 270
@@ -496,7 +497,7 @@ def build():
         ("SEX", "F"),
     ]
     for i, (lab, val) in enumerate(fields):
-        field(c, fx, 224 + i * 40, lab, val, fw)
+        field(c, fx, 224 + i * 44, lab, val, fw)
 
     guilloche(c, 44, 492, 484, 3, 30, FAINT)
 
